@@ -29,10 +29,6 @@ export class ArtistService {
   findOne(id: string): ResponseArtistDto {
     const artist = this.db.findOne(id);
 
-    if (!artist) {
-      throw new NotFoundException(`Artist with ID: "${id}" is not found.`);
-    }
-
     return artist;
   }
 

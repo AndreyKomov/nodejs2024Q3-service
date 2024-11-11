@@ -5,6 +5,7 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  NotFoundException,
   Param,
   Post,
   Put,
@@ -37,7 +38,13 @@ export class ArtistController {
     @Param('id', UUIDValidationPipe)
     id: string,
   ): ResponseArtistDto | undefined {
-    return this.artistService.findOne(id);
+    const artist = this.artistService.findOne(id);
+
+    if (!artist) {
+      throw new NotFoundException(`Artist with ID: "${id}" is not found.`);
+    }
+
+    return artist;
   }
 
   @Post()
