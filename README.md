@@ -44,6 +44,8 @@ You can make requests with the postman APP [https://www.postman.com/](https://ww
 
 Use separated routes for all requests:
 
+**User**
+
 + GET /user - get all users
 + GET /user/:id - get single user by id
 + POST /user - create user (following DTO should be used) CreateUserDto
@@ -58,11 +60,15 @@ interface UpdatePasswordDto {
 }
 + DELETE /user/:id - delete user
 
+**Track**
+
 + GET /track - get all tracks
 + GET /track/:id - get single track by id
 + POST /track - create new track
 + PUT /track/:id - update track info
 + DELETE /track/:id - delete track
+
+**Artist**
 
 + GET /artist - get all artists
 + GET /artist/:id - get single artist by id
@@ -70,11 +76,15 @@ interface UpdatePasswordDto {
 + PUT /artist/:id - update artist info
 + DELETE /artist/:id - delete album
 
+**Album**
+
 + GET /album - get all albums
 + GET /album/:id - get single album by id
 + POST /album - create new album
 + PUT /album/:id - update album info
 + DELETE /album/:id - delete album
+
+**Favorites**
 
 + GET /favs - get all favorites
 Server should answer with status code 200 and all favorite records (not their ids), split by entity type:
