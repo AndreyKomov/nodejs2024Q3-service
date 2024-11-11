@@ -13,22 +13,23 @@ import { AlbumModule } from './album/album.module';
 import { AlbumController } from './album/album.controller';
 import { ArtistModule } from './artist/artist.module';
 import { ArtistController } from './artist/artist.controller';
+import { ArtistService } from './artist/artist.service';
 
 @Module({
-  imports: [UserModule, TrackModule, AlbumModule, ArtistController],
+  imports: [UserModule, TrackModule, AlbumModule, ArtistModule],
   controllers: [
     AppController,
     UserController,
     TrackController,
     AlbumController,
-    ArtistModule,
+    ArtistController,
   ],
   providers: [
     AppService,
     UserService,
     TrackService,
     AlbumService,
-    ArtistController,
+    ArtistService,
     DatabaseService,
   ],
 })
