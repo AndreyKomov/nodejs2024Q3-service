@@ -1,6 +1,6 @@
 import { ExcludePasswordInterceptor } from './../intercaptors/exclude-password.untercaptor';
 import { NotFoundExceptionFilter } from './../filters/not-found-exeption.filter';
-import { BadRequestExceptionFilter } from 'src/filters/bad-request-exeption.filter';
+import { BadRequestExceptionFilter } from 'src/filters/bad-request-exception.filter';
 import {
   Body,
   Controller,

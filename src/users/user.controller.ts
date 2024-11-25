@@ -11,7 +11,7 @@ import {
   UseFilters,
   UseInterceptors,
 } from '@nestjs/common';
-import { BadRequestExceptionFilter } from 'src/filters/bad-request-exeption.filter';
+import { BadRequestExceptionFilter } from 'src/filters/bad-request-exception.filter';
 import { NotFoundExceptionFilter } from 'src/filters/not-found-exeption.filter';
 import { ExcludePasswordInterceptor } from 'src/intercaptors/exclude-password.untercaptor';
 import { ResponseUserDto } from './dto/response-user.dto';
@@ -20,6 +20,7 @@ import { UUIDValidationPipe } from 'src/filters/validators/uuid.validator';
 import { RequestParamValidationPipe } from 'src/filters/validators/request-param.validator';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
+import { HttpExceptionFilter } from 'src/filters/http-exeption.filter';
 
 @UseFilters(BadRequestExceptionFilter, NotFoundExceptionFilter)
 @UseInterceptors(new ExcludePasswordInterceptor(ResponseUserDto))
@@ -48,6 +49,7 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @UseFilters(HttpExceptionFilter)
   @Put(':id')
   update(
     @Param('id', UUIDValidationPipe) id: string,
