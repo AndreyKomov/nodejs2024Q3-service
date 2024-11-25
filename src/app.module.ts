@@ -17,9 +17,20 @@ import { ArtistModule } from './artist/artist.module';
 import { ArtistController } from './artist/artist.controller';
 import { ArtistService } from './artist/artist.service';
 import { FavoriteService } from './favorites/favorite.service';
+import { ConfigModule } from '@nestjs/config';
+import configuration from './config/configuration';
 
 @Module({
-  imports: [UserModule, TrackModule, AlbumModule, ArtistModule, FavoriteModule],
+  imports: [
+    ConfigModule.forRoot({
+      load: [configuration],
+    }),
+    UserModule,
+    TrackModule,
+    AlbumModule,
+    ArtistModule,
+    FavoriteModule
+  ],
   controllers: [
     AppController,
     UserController,
