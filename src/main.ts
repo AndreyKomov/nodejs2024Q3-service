@@ -6,8 +6,9 @@ import { LoggingInterceptor } from './intercaptors/logging.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
   const logger = new CustomLogger(configService);
-  const port = ConfigService.get('port');
+  const port = configService.get('port');
 
   app.useLogger(logger);
   app.useGlobalInterceptors(new LoggingInterceptor());
