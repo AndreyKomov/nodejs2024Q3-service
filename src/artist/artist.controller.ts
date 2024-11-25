@@ -16,7 +16,7 @@ import { ArtistService } from './artist.service';
 import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
 import { ResponseArtistDto } from './dto/response-artist.dto';
-import { BadRequestExceptionFilter } from 'src/filters/bad-request-exeption.filter';
+import { BadRequestExceptionFilter } from 'src/filters/bad-request-exception.filter';
 import { NotFoundExceptionFilter } from 'src/filters/not-found-exeption.filter';
 import { ExcludePasswordInterceptor } from 'src/intercaptors/exclude-password.untercaptor';
 import { UUIDValidationPipe } from 'src/filters/validators/uuid.validator';

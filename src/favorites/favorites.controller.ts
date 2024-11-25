@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { FavoriteService } from './favorite.service';
 import { ResponseFavoriteDto } from './dto/response-favorite.dto';
-import { BadRequestExceptionFilter } from 'src/filters/bad-request-exeption.filter';
+import { BadRequestExceptionFilter } from 'src/filters/bad-request-exception.filter';
 import { NotFoundExceptionFilter } from 'src/filters/not-found-exeption.filter';
 import { ExcludePasswordInterceptor } from 'src/intercaptors/exclude-password.untercaptor';
 import { UUIDValidationPipe } from 'src/filters/validators/uuid.validator';
