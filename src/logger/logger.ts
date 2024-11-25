@@ -1,3 +1,4 @@
+import { ConfigService } from '@nestjs/config';
 import { Injectable, LoggerService, LogLevel } from '@nestjs/common';
 import {
   existsSync,
@@ -7,7 +8,6 @@ import {
   appendFileSync,
 } from 'node:fs';
 import * as path from 'path';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class CustomLogger implements LoggerService {
