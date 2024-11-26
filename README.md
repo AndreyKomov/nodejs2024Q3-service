@@ -1,31 +1,32 @@
 # Home Library Service
 
-## Prerequisites
-
-- Git - [Download & Install Git](https://git-scm.com/downloads).
-- Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager.
+The Home Library Service!
+Users can create, read, update, delete data about Artists, Tracks and Albums, add them to Favorites in their own Home Library!
 
 ## Downloading
 
+Use
 ```
 git clone {repository URL}
 ```
+command to download the APP.
 
 ## Installing NPM modules
 
+To install the APP dependencies, please, use
 ```
 npm install
 ```
+command.
 
 ## Running application
-
+Use
 ```
 npm start
 ```
+comand.
 
 After starting the app on port (4000 as default) you can open
-in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
-For more information about OpenAPI/Swagger please visit https://swagger.io/.
 
 ## Testing
 
@@ -37,36 +38,64 @@ To run all tests without authorization
 npm run test
 ```
 
-To run only one of all test suites
+## Using
 
-```
-npm run test -- <path to suite>
-```
+You can make requests with the postman APP [https://www.postman.com/](https://www.postman.com/).
 
-To run all test with authorization
+Use separated routes for all requests:
 
-```
-npm run test:auth
-```
+**User**
 
-To run only specific test suite with authorization
++ GET /user - get all users
++ GET /user/:id - get single user by id
++ POST /user - create user (following DTO should be used) CreateUserDto
+    interface CreateUserDto {
+      login: string;
+      password: string;
+    }
++ PUT /user/:id - update user's password UpdatePasswordDto (with attributes):
+interface UpdatePasswordDto {
+  oldPassword: string; // previous password
+  newPassword: string; // new password
+}
++ DELETE /user/:id - delete user
 
-```
-npm run test:auth -- <path to suite>
-```
+**Track**
 
-### Auto-fix and format
++ GET /track - get all tracks
++ GET /track/:id - get single track by id
++ POST /track - create new track
++ PUT /track/:id - update track info
++ DELETE /track/:id - delete track
 
-```
-npm run lint
-```
+**Artist**
 
-```
-npm run format
-```
++ GET /artist - get all artists
++ GET /artist/:id - get single artist by id
++ POST /artist - create new artist
++ PUT /artist/:id - update artist info
++ DELETE /artist/:id - delete album
 
-### Debugging in VSCode
+**Album**
 
-Press <kbd>F5</kbd> to debug.
++ GET /album - get all albums
++ GET /album/:id - get single album by id
++ POST /album - create new album
++ PUT /album/:id - update album info
++ DELETE /album/:id - delete album
 
-For more information, visit: https://code.visualstudio.com/docs/editor/debugging
+**Favorites**
+
++ GET /favs - get all favorites
+Server should answer with status code 200 and all favorite records (not their ids), split by entity type:
+interface FavoritesResponse{
+  artists: Artist[];
+  albums: Album[];
+  tracks: Track[];
+}
++ POST /favs/track/:id - add track to the favorites
++ DELETE /favs/track/:id - delete track from favorites
++ POST /favs/album/:id - add album to the favorites
++ DELETE /favs/album/:id - delete album from favorites
++ POST /favs/artist/:id - add artist to the favorites
++ DELETE /favs/artist/:id - delete artist from favorites
